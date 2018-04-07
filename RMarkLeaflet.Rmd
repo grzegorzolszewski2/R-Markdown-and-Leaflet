@@ -1,0 +1,37 @@
+---
+title: "R Markdown and Leaflet"
+author: "Grzegorz Olszewski"
+date: "7 kwietnia 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+## My first Map with R - Wroclav City
+
+
+```{r cars}
+library("leaflet")
+library("dplyr")
+map <-
+  leaflet() %>% 
+  addTiles() %>% 
+  setView(lat = 51.10719, lng=17.037485, zoom = 13) %>% 
+  addCircleMarkers(lat=51.10719, lng=17.037485 , 
+                        popup="Wroclav City Center") %>% 
+  addMarkers(lat=51.094521, lng=17.019539 , 
+                        popup="Sky Tower") %>% 
+  addCircles(lat=51.10719, lng=17.037485 , fillColor = "transparent", radius= 500 )
+
+map
+```
+
+## Another view on the map : "Stamen.Toner"
+```{r map}
+map %>% 
+   addProviderTiles("Stamen.Toner")
+
+```
+
